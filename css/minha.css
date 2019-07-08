@@ -1,0 +1,10 @@
+.teste{
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+  background-color: rgba(115, 115, 115, 0.2);
+  }  
+  
+  .minha {
+    background: rgba(15, 15, 15, 1);
+    border: 40px none #333;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0);
+}  	
