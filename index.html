@@ -492,10 +492,11 @@ difusão/divulgação do património</li>
                     <ul>
                         <li>No Camera Instrinsic Parameters</li>
                         <li>StructureFromMotion falha/mau</li>
+                        <li>Resultado com muitos "buracos"</li>
                         <li>Acelerar DepthMap</li>
                         <li>Meshing crash ou lento</li>
-                        <li>Versão  low-poly</li>
-                        <li>Draft Mesh OU sem CUDA GPU</li>                        
+                        <li>Melhorar resolução da textura</li>
+                        <li>Low Poly e Draft Mesh</li>                        
                         <li>Masks</li>
 
                         
@@ -510,9 +511,9 @@ difusão/divulgação do património</li>
 					<h4>No Camera Instrinsic Parameters, Sensor width doesn't exist in the database</h4>
                     <ul>
                         <li>Adicionar em cameraSensors.db (/aliceVision/share/aliceVision)</li>
-                        <li>camera brand;camera model;sensorWidth_mm</li>
-                        <li>Exemplo: Google;Google Pixel XL;6.25</li>
-                        <li>https://www.devicespecifications.com/en/model/a95e3ed6</li>
+                        <li>CameraBrand;CameraModel;SensorWidth_mm</li>
+                        <li>Exemplo (https://www.devicespecifications.com/en/model/a95e3ed6): Google;Google Pixel XL;6.25</li>
+			<li>https://www.digicamdb.com/ OU https://www.devicespecifications.com/</li>
 
                     </ul>
 					
@@ -521,16 +522,29 @@ difusão/divulgação do património</li>
 				<section>
                     
 					<h4>StructureFromMotion falha ou mau</h4>
-                    <p>Provavelmente, foram extraídos poucos features. Para aumentar a qualidade no alinhamento, SfM, Sparse Cloud...</p>
+
+		<p style="text-align:left;">Provavelmente, foram extraídos poucos features. Para aumentar a qualidade no alinhamento, SfM, Sparse Cloud:</p>                          
+                    
                     <ul>
                         <li>FeatureExtraction: Describer Preset em High ou Ultra.
                         <li>Adicionar AKAZE em FeatureExtraction, FeatureMatching and StructureFromMotion</li>
                         <li>FeatureMatching: ativar Guided Matching</li>
-                        <li>Vai demorar mais tempo!</li>
+                    </ul>
+                        <p style="text-align:left;">Vai demorar mais tempo!</p>					
+				</section>                    
+                    
+
+				<section>
+                    
+					<h4>Resultado com muitos "buracos"</h4>
+                    <ul>
+                        <li>Talvez o Input seja pouco denso ou demasiado desfocado...</li>
+                        <li>No DepthMapFilter reduzir Min Consistent Cameras para 2 e Min Consistent Cameras Bad Similarity para 3</li>
+                        <li>No MeshFiltering ajustar Filter Large Triangles Factor</li>
                     </ul>
 					
 				</section>                    
-                    
+
 
                 
 
@@ -539,7 +553,7 @@ difusão/divulgação do património</li>
 					<h4>Acelerar DepthMap</h4>
                     <ul>
                         <li>Aumentar o Downscale (mas reduz qualidade!)</li>
-                        <li>Reduzir nº de sgmMaxTCams e refineMaxTCams. 3 é o mínimo necessário , 4 é suficiente em muitos casos.</li>
+                        <li>Reduzir SGM: Nb Neighbour Cameras e Refine: Nb Neighbour Cameras reduz tempo linearmente (reduzir 10 para 5 corta tempo em metade). 3 é o mínimo necessário, 4 é suficiente em muitos casos. Default é para ambientes amplos (onde difícil ter 4 imagens que cubram mesma área)</li>
 
                     </ul>
 					
@@ -555,11 +569,23 @@ difusão/divulgação do património</li>
                     </ul>
 					
 				</section>                     
+
+
+
+				<section>
+                    
+					<h4>Melhorar resolução da textura</h4>
+                    <ul>
+                        <li>No Texturing, reduzir Downscale para 1 (vai demorar mais!)</li>
+                    </ul>
+					
+				</section>                    
+
                     
 
  				<section>
                     
-					<h4>Versão  low-poly PT1</h4>
+					<h4>Versão  low-poly PT1 - Decimate</h4>
                     <ul>
                         <li>Criar uma versão mais leve a partir da original e depois retexturizar.</li>
 
@@ -569,7 +595,7 @@ difusão/divulgação do património</li>
                     
  				<section>
                     
-					<h4>Versão  low-poly PT2</h4>
+					<h4>Versão  low-poly PT2 - Retopology</h4>
                     <img src="img/image11-1.gif" class="minha" alt="" style="width:100%">
                     <ul>
                         <li>É possível utilizar programa externo (Blender, InstantMeshes, etc.) mas NÃO alterar escala 
@@ -591,11 +617,30 @@ difusão/divulgação do património</li>
                     </ul>
                     </section>  
                     
+
+ 				<section>
+                    
+					<h4>Draft Mesh OU sem CUDA GPU</h4>
+                    <img src="img/53656054-e55f0680-3c49-11e9-890b-e2a78305153e.PNG" class="minha" alt="" style="width:120%">
+                                               
+
+                    </section>  
+
+
+
+
+
+
+
  				<section>
                     
 					<h4>Masks</h4>
                     
-                    <h1>Ups... Keep calm and...</h1>
+                    <h5>Ups... Keep calm and...</h5>
+                          <ul>
+                        <li>No roadmap</li>
+                        <li>Fundo sem "features"</li>
+                    </ul>
 
                     </section>  
 
